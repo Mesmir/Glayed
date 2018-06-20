@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TurretControls : MonoBehaviour {
+
+    public Text healthTxt;
+    public int healthCount;
+    public Text youLost;
 
     #region Turret Rotation var's
     public float trackSpeed;
@@ -17,16 +21,18 @@ public class TurretControls : MonoBehaviour {
 
     private float lastFired = Mathf.NegativeInfinity;
     private Coroutine fireRate;
-
+    
     private Turret activeTurret;
-    public MachineGun machineGun;
+    public Turret machineGun;
     public Lazer lazer;
     public RocketLauncher rocketLauncher;
 
     private void Awake ()
     {
+        // Setup starting gun
         SwapGunTo(machineGun);
         plane = new Plane(Vector3.up, transform.position);
+        healthTxt.text = "Health: " + healthCount;
     }
 	
 	private void Update () {
@@ -52,6 +58,31 @@ public class TurretControls : MonoBehaviour {
             }
             fireRate = StartCoroutine(FireRate());
         }
+
+        if (Input.GetButtonDown(machineGun.turretSwapKey))
+        {
+            SwapGunTo(machineGun);
+        }
+        if (Input.GetButtonDown(lazer.turretSwapKey))
+        {
+            SwapGunTo(lazer);
+        }
+        if (Input.GetButtonDown(rocketLauncher.turretSwapKey))
+        {
+            SwapGunTo(rocketLauncher);
+        }
+    }
+
+    public void GetDamaged(int dmg)
+    {
+        healthCount -= dmg;
+        if (healthCount <= 0)
+        {
+            healthCount = 0;
+            youLost.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+        healthTxt.text = "Health: " + healthCount;
     }
 
     #region Turret Fire
@@ -80,21 +111,6 @@ public class TurretControls : MonoBehaviour {
     #endregion
 
     #region GunSwapping
-    public void GunSwapMachineGun()
-    {
-        SwapGunTo(machineGun);
-    }
-
-    public void GunSwapLazer()
-    {
-        SwapGunTo(lazer);
-    }
-
-    public void GunSwapRocketLauncher()
-    {
-        SwapGunTo(rocketLauncher);
-    }
-
     private void SwapGunTo(Turret turret)
     {
         if (activeTurret != null)

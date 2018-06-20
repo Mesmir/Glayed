@@ -12,11 +12,14 @@ using UnityEngine;
 [Serializable]
 public class Turret
 {
+    public string turretSwapKey;
+
     public int damage;
     public float fireRate, projectileSpeed;
     public GameObject turretObject;
     public ParticleSystem projectile;
 
+    // This will be added to the projectiles shot with this turret
     public virtual void OnHit(EnemyUnit enemyUnit, BulletScript bullet)
     {
         enemyUnit.ReceiveDamage(damage);
@@ -25,14 +28,9 @@ public class Turret
 }
 
 [Serializable]
-public class MachineGun : Turret
-{
-
-}
-
-[Serializable]
 public class Lazer : Turret
 {
+    // This turret's bullets don't get destroyed if they collide
     public override void OnHit(EnemyUnit enemyUnit, BulletScript bullet)
     {
         enemyUnit.ReceiveDamage(damage);
@@ -42,5 +40,20 @@ public class Lazer : Turret
 [Serializable]
 public class RocketLauncher : Turret
 {
+    // This turret's bullet cause an explosion on impact
+    public float boomRadius;
+    public override void OnHit(EnemyUnit enemyUnit, BulletScript bullet)
+    {
+        Vector3 center = bullet.transform.position;
+        Collider[] hitColliders = Physics.OverlapSphere(center, boomRadius / 2);
 
+        foreach(Collider col in hitColliders)
+        {
+            if (col.tag == "Enemy")
+            {
+                col.GetComponent<EnemyUnit>().ReceiveDamage(damage);
+            }
+        }
+        MonoBehaviour.Destroy(bullet.gameObject);
+    }
 }
