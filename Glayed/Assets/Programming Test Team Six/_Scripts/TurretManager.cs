@@ -38,6 +38,10 @@ public class TurretManager : MonoBehaviour {
         // Setup
         SwapGunTo(machineGun);
         plane = new Plane(Vector3.up, transform.position);
+        //healthTxt = GameObject.Find("HealthText").GetComponent<Text>();
+        //scoreTxt = GameObject.Find("ScoreText").GetComponent<Text>();
+        //youLost = GameObject.Find("GameOver").GetComponent<Text>();
+        //lineR = GameObject.Find("LineTargeter").GetComponent<LineRenderer>();
         healthTxt.text = "Health: " + healthCount;
         scoreTxt.text = "Score: " + currentScore;
     }
