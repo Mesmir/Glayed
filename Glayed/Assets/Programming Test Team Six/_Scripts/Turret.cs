@@ -3,12 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Machine gun; Rapid fire ====== + OverCharge (fire rate increases over time, tot overheat)
- * Lazer; Piercing -----------
- * Rocket launcher; AoE  %#@^&%$ kaboom
- */
-
 [Serializable]
 public class Turret
 {

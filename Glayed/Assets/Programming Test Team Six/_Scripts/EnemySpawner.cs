@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-lijst met spawnpoints
-elke wave, spawn karakter tot y powerlevel
-move to turret
-hou bij hoeveel er nog zijn en start nieuwe wave als het afgelopen is
- */
-
 public class EnemySpawner : MonoBehaviour {
 
     // Static reference to itself, so that the enemy units can easily access it
-    public static EnemySpawner instance;
+    public static EnemySpawner enemySpawner;
 
     private GameObject[] spawnPoints;
     // The starting maximum powerlevel of all enemies combined.
@@ -40,7 +33,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Awake()
     {
-        instance = this;
+        enemySpawner = this;
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
 
         StartCoroutine(EnemySpawning());
@@ -59,7 +52,7 @@ public class EnemySpawner : MonoBehaviour {
             if (currentPowerLevel >= maxCombinedPowerLevel)
                 continue;
 
-            // The maximum power level a spawned enemies can have
+            // The maximum power level a spawned enemy can have
             int powerLevelDifference = maxCombinedPowerLevel - currentPowerLevel;
 
             // Add all enemies that are below the maximum power level difference

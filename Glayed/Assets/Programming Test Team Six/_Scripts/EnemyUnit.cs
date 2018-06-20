@@ -6,8 +6,9 @@ public class EnemyUnit : MonoBehaviour {
 
     public int health;
     public int damage;
+    public int scoreValue;
     // The powerlevel is used to balance the combined power level of spawned enemies
-    public int powerLevel; // It's over 9000!!
+    public int powerLevel;
 
     private Transform target;
     public float moveSpeed;
@@ -19,12 +20,12 @@ public class EnemyUnit : MonoBehaviour {
 
     public void Update()
     {
-        float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-        if (Vector3.Distance(transform.position, target.position) <= 4f)
+        float speed = moveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+        if (Vector3.Distance(transform.position, target.position) <= 3.5f)
         {
             // Deals damage when closed in on the player and destroys itself
-            target.GetComponent<TurretControls>().GetDamaged(damage);
+            target.GetComponent<TurretManager>().GetDamaged(damage);
             OnDeath();
         }
     }
@@ -33,13 +34,16 @@ public class EnemyUnit : MonoBehaviour {
     {
         health -= damage;
         if (health <= 0)
+        {
+            target.GetComponent<TurretManager>().AddScore(scoreValue);
             OnDeath();
+        }
     }
 
     private void OnDeath()
     {
         // Cleaning the spawned units list
-        EnemySpawner.instance.spawnedUnits.Remove(this);
+        EnemySpawner.enemySpawner.spawnedUnits.Remove(this);
         Destroy(gameObject);
     }
 }

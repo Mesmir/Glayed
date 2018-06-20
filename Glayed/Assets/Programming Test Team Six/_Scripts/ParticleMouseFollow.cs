@@ -18,9 +18,8 @@ public class ParticleMouseFollow : MonoBehaviour {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = distanceFromMouse;
 
+        // Get mouse position and lerp the particle to that position over time.
         Vector3 mouseScreenPosToWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        Vector3 psPosition = Vector3.Lerp(transform.position, mouseScreenPosToWorldPos, 1.0f - Mathf.Exp(-trackSpeed * Time.deltaTime));
-        transform.position = psPosition;
-
+        transform.position = Vector3.Lerp(transform.position, mouseScreenPosToWorldPos, 1.0f - Mathf.Exp(-trackSpeed * Time.deltaTime));
 	}
 }
