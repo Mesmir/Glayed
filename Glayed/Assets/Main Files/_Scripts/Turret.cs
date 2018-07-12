@@ -8,8 +8,8 @@ public class Turret
 {
     public string turretSwapKey;
 
-    public int damage;
-    public float fireRate, projectileSpeed;
+    public int damage, ammo;
+    public float fireRate, projectileSpeed, reloadTime;
     public GameObject turretObject;
     public ParticleSystem projectile;
 
@@ -19,6 +19,12 @@ public class Turret
         enemyUnit.ReceiveDamage(damage);
         MonoBehaviour.Destroy(bullet.gameObject);
     }
+}
+
+[Serializable]
+public class MachineGun : Turret
+{
+
 }
 
 [Serializable]
@@ -34,6 +40,7 @@ public class Lazer : Turret
 [Serializable]
 public class RocketLauncher : Turret
 {
+    //Turret specific; Core explosion dmg, rocket projectile speed.
     // This turret's bullet cause an explosion on impact
     public float boomRadius;
     public override void OnHit(EnemyUnit enemyUnit, BulletScript bullet)
@@ -50,4 +57,10 @@ public class RocketLauncher : Turret
         }
         MonoBehaviour.Destroy(bullet.gameObject);
     }
+}
+
+[Serializable]
+public class Swiper : Turret
+{
+
 }

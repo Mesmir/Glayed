@@ -15,7 +15,7 @@
  * 
  * Turrets; 
  *  - Standard, Rapid Fire (Machine gun), Pierce (Lazer), Sniper (Slow, Single Target, Huge dmg), Rocket Launcher (Splash), Glaive (Bounce), Boomerang(return Bullit), Trap Layer (lays traps in a spot or area), 
- *    Curse (places a curse on the enemy unit, increasing equipped bullit effect dramatically), Orbitter (A sphere orbit's the base), Gate (Probius ult), 
+ *    Curse (places a curse on the enemy unit, increasing equipped bullit effect dramatically), Orbitter (A sphere orbit's the base), Gate (Probius ult), DiceTower
  * 
  * Ammo Types; ~Ammo Equip Cap (10), each ammo type costs 1 (+1 per upgraded lvl), can arrange self.- Depending on turret, not every bullit can be equipped
  *  - Fire(AoE Dot), Poison(Heavy single target Dot), Sharp/Slash(Bleed Dot?), Ice(Slow), Panic, Fear, Knockback, Lightning Strike, Swipe(kan ook turret zijn)
@@ -26,7 +26,7 @@
  *  - Radar Bot (Lights up the closest or most dangerous enemy's, also grants bonus dmg to them)
  *  - Decoy Bot (Let's you place a decoy somewhere which will attract the enemy, higher levels will allow you to give an effect to the decoy, i.e. a basic gun, or slow)
  *  - Reinforcements (Deploys drones to fight and defend the base)
- *  - Repair Bot (Repairs the base)
+ *  - Repair Bot (Repairs the base, higher levels will make it overheal- granting a shield)
  *  - Interest Rate (Increases the interest rate at the end of the wave, high levels also gives enemy's a chance to give extra gold / Banking option?)
  * 
  * Upgrading; 

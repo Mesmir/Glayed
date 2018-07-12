@@ -28,20 +28,18 @@ public class TurretManager : MonoBehaviour {
     private Coroutine fireRate;
     
     private Turret activeTurret;
+    public Turret standardGun;
     public Turret machineGun;
     public Lazer lazer;
     public RocketLauncher rocketLauncher;
+    public Swiper swiper;
     #endregion
 
     private void Awake ()
     {
         // Setup
-        SwapGunTo(machineGun);
+        SwapGunTo(standardGun);
         plane = new Plane(Vector3.up, transform.position);
-        //healthTxt = GameObject.Find("HealthText").GetComponent<Text>();
-        //scoreTxt = GameObject.Find("ScoreText").GetComponent<Text>();
-        //youLost = GameObject.Find("GameOver").GetComponent<Text>();
-        //lineR = GameObject.Find("LineTargeter").GetComponent<LineRenderer>();
         healthTxt.text = "Health: " + healthCount;
         scoreTxt.text = "Score: " + currentScore;
     }
@@ -76,6 +74,10 @@ public class TurretManager : MonoBehaviour {
         }
 
         #region Swapping of Turrets
+        if (Input.GetButtonDown(standardGun.turretSwapKey))
+        {
+            SwapGunTo(standardGun);
+        }
         if (Input.GetButtonDown(machineGun.turretSwapKey))
         {
             SwapGunTo(machineGun);
@@ -87,6 +89,10 @@ public class TurretManager : MonoBehaviour {
         if (Input.GetButtonDown(rocketLauncher.turretSwapKey))
         {
             SwapGunTo(rocketLauncher);
+        }
+        if (Input.GetButtonDown(swiper.turretSwapKey))
+        {
+            SwapGunTo(swiper);
         }
         #endregion
     }
