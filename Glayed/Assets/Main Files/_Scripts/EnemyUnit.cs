@@ -43,7 +43,7 @@ public class EnemyUnit : MonoBehaviour {
     private void OnDeath()
     {
         // Cleaning the spawned units list
-        EnemySpawner.enemySpawner.spawnedUnits.Remove(this);
+        WaveManager.enemySpawner.spawnedUnits.Remove(this);
         Destroy(gameObject);
     }
 }

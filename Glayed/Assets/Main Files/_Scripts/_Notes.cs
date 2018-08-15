@@ -10,4 +10,7 @@
  https://www.youtube.com/watch?v=wFgS5pzG1Qs
  https://www.youtube.com/watch?v=T-ZNkGwImcI
  *  
+ *  Camera follow
+ *  center position (building) - mouse position
+ *  lerp to center pos  
  */

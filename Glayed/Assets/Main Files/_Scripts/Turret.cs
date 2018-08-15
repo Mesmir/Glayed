@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -8,7 +6,7 @@ public class Turret
 {
     public string turretSwapKey;
 
-    public int damage, ammo;
+    public int level = 1, damage, magazine;
     public float fireRate, projectileSpeed, reloadTime;
     public GameObject turretObject;
     public ParticleSystem projectile;
@@ -41,7 +39,7 @@ public class Lazer : Turret
 public class RocketLauncher : Turret
 {
     //Turret specific; Core explosion dmg, rocket projectile speed.
-    // This turret's bullet cause an explosion on impact
+    //This turret's bullet cause an explosion on impact
     public float boomRadius;
     public override void OnHit(EnemyUnit enemyUnit, BulletScript bullet)
     {
@@ -60,7 +58,7 @@ public class RocketLauncher : Turret
 }
 
 [Serializable]
-public class Swiper : Turret
+public class GlaiveThrower : Turret
 {
 
 }

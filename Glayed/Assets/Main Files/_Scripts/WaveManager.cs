@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class WaveManager : MonoBehaviour {
 
     // Static reference to itself, so that the enemy units can easily access it
-    public static EnemySpawner enemySpawner;
+    public static WaveManager enemySpawner;
 
     private GameObject[] spawnPoints;
     // The starting maximum powerlevel of all enemies combined.
@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour {
     public float levelTimer;
     // Amount the power is raised per "wave"
     public int powerLevelIncrease;
+
+    private bool whileTrue;
 
     [HideInInspector]
     public List<EnemyUnit> spawnedUnits = new List<EnemyUnit>();
@@ -35,14 +37,15 @@ public class EnemySpawner : MonoBehaviour {
     {
         enemySpawner = this;
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
+        whileTrue = true;
 
         StartCoroutine(EnemySpawning());
-        StartCoroutine(LevelIncrease());
+        //StartCoroutine(LevelIncrease());
     }
 
     private IEnumerator EnemySpawning()
     {
-        while (true)
+        while (whileTrue)
         {
             yield return null;
 
@@ -50,7 +53,10 @@ public class EnemySpawner : MonoBehaviour {
 
             // If the current power level is just right
             if (currentPowerLevel >= maxCombinedPowerLevel)
+            {
+                whileTrue = false;
                 continue;
+            }
 
             // The maximum power level a spawned enemy can have
             int powerLevelDifference = maxCombinedPowerLevel - currentPowerLevel;

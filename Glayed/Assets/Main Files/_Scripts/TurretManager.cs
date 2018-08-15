@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class TurretManager : MonoBehaviour {
 
     #region UI vars
@@ -32,7 +33,7 @@ public class TurretManager : MonoBehaviour {
     public Turret machineGun;
     public Lazer lazer;
     public RocketLauncher rocketLauncher;
-    public Swiper swiper;
+    //public GlaiveThrower glaiveThrower;
     #endregion
 
     private void Awake ()
@@ -90,10 +91,10 @@ public class TurretManager : MonoBehaviour {
         {
             SwapGunTo(rocketLauncher);
         }
-        if (Input.GetButtonDown(swiper.turretSwapKey))
-        {
-            SwapGunTo(swiper);
-        }
+        //if (Input.GetButtonDown(glaiveThrower.turretSwapKey))
+        //{
+        //    SwapGunTo(glaiveThrower);
+        //}
         #endregion
     }
 

@@ -8,9 +8,16 @@ public class ParticleMouseFollow : MonoBehaviour {
     public float trackSpeed;
     public float distanceFromMouse;
 
+    public bool cameraFollow;
+    private Vector3 centerWorld = new Vector3(0,50,0);
+    public Camera cam;
+    public float smoothTime = 0.3F;
+    private Vector3 velocity = new Vector3(0, 50, 0);
+
     private void Start()
     {
         Cursor.visible = false;
+        cam = Camera.main;
     }
 
     void Update () {
@@ -21,5 +28,12 @@ public class ParticleMouseFollow : MonoBehaviour {
         // Get mouse position and lerp the particle to that position over time.
         Vector3 mouseScreenPosToWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         transform.position = Vector3.Lerp(transform.position, mouseScreenPosToWorldPos, 1.0f - Mathf.Exp(-trackSpeed * Time.deltaTime));
+
+        if (cameraFollow == true)
+        {
+            //cam.transform.position = Vector3.Lerp(new Vector3 (0,50,0), new Vector3 (mousePos.x, 50, 0), Time.deltaTime);
+            Vector3 targetPos = new Vector3(mousePos.x, 50, mousePos.y);
+            cam.transform.position = Vector3.SmoothDamp(cam.transform.position, targetPos, ref velocity, smoothTime * Time.deltaTime);
+        }
 	}
 }

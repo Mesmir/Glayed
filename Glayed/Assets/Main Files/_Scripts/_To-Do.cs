@@ -5,6 +5,8 @@
  * Idea; Secret Based Unlocking
  * Idea; Utility Buildings use Electricity
  * Idea; Alignments (like Terror, Human, Nature (I.E, Upgrading alot of Gore-y stuff (Panic, Fear, Blood stuff), increases your Terror Allignment, giving you buffs and debuffs accordingly (Perhaps even change the base))
+ * Idea; Semi-Mouse Following camera
+ * Idea; Commander's; a npc you choose which will give you additional stats for the current session
  * Hexagonial Pillar Floor 
  * 
  * Currency (+interest) / ScoreBased, WaveBased unlocking?
@@ -22,15 +24,16 @@
  * 
  * Utility Buildings only; 
  *  - A.I Turret (Any turret that has been unlocked (@50% efficiency (Upgradeable?))
- *  - Research Center(speeds up research time/allows certain researches, or Reduces Research cost by x% & 1 more for every kill made)
+ *  - Research Center (speeds up research time/allows certain researches, or Reduces Research cost by x% & 1 more for every kill made)
  *  - Radar Bot (Lights up the closest or most dangerous enemy's, also grants bonus dmg to them)
  *  - Decoy Bot (Let's you place a decoy somewhere which will attract the enemy, higher levels will allow you to give an effect to the decoy, i.e. a basic gun, or slow)
  *  - Reinforcements (Deploys drones to fight and defend the base)
  *  - Repair Bot (Repairs the base, higher levels will make it overheal- granting a shield)
  *  - Interest Rate (Increases the interest rate at the end of the wave, high levels also gives enemy's a chance to give extra gold / Banking option?)
+ *  - Foresight Center (Shows upcoming wave stats and info)
  * 
  * Upgrading; 
- *  - Every upgrade needs to be researched which takes (game)time or x amount of waves
+ *  - Every upgrade needs to be researched which takes (game)time or x amount of waves (debatable)
  *  - Each turret Level increases ammo cap by 1 (A turret gains a Level every 5 upgrades)
  *  - Each Ammo upgrade increases its potency
  *  - Cost rises exponentially
